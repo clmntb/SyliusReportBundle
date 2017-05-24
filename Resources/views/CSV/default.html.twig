@@ -1,0 +1,7 @@
+{% block content %}
+    <div class="col-xs-12">
+        <div class="row">
+            <a href="{{ path('sylius_report_csv', {'filename': filename}) }}" target="_blank">{{ 'sylius.renderer.report.csv.download'|trans }}</a>
+        </div>
+    </div>
+{% endblock %}

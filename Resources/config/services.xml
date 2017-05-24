@@ -74,6 +74,12 @@
             <tag name="sylius.report.renderer" renderer="sylius_renderer_table" label="Table renderer" />
         </service>
 
+        <service id="sylius.form.type.renderer.csv" class="Sylius\Bundle\ReportBundle\Renderer\CSVRenderer">
+            <argument type="service" id="templating" />
+            <argument>%sylius.report.csv_directory_path%</argument>
+            <tag name="sylius.report.renderer" renderer="sylius_renderer_csv" label="CSV renderer" />
+        </service>
+
         <service id="sylius.form.type.renderer_choice" class="Sylius\Bundle\ReportBundle\Form\Type\Renderer\RendererChoiceType">
             <argument>%sylius.report.renderers%</argument>
             <tag name="form.type" />
@@ -84,6 +90,10 @@
         </service>
 
         <service id="sylius.form.type.report.renderer.table_configuration" class="Sylius\Bundle\ReportBundle\Form\Type\Renderer\TableConfigurationType">
+            <tag name="form.type" />
+        </service>
+
+        <service id="sylius.form.type.report.renderer.csv_configuration" class="Sylius\Bundle\ReportBundle\Form\Type\Renderer\CSVConfigurationType">
             <tag name="form.type" />
         </service>
 

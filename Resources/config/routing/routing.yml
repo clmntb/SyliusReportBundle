@@ -1,0 +1,5 @@
+sylius_report_csv:
+    path: /reports/csv/{filename}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.report:csvAction

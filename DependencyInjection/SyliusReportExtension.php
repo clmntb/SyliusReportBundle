@@ -47,5 +47,7 @@ class SyliusReportExtension extends AbstractResourceExtension
             ->addArgument(new Reference('sylius.registry.report.renderer'))
             ->addArgument(new Reference('sylius.registry.report.data_fetcher'))
         ;
+
+        $container->setParameter('sylius.report.csv_directory_path', $config['csv_directory_path']);
     }
 }

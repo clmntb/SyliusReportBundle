@@ -84,6 +84,22 @@ class ReportController extends ResourceController
     }
 
     /**
+     * @param Request $request
+     * @param $filename
+     *
+     * @return Response
+     */
+    public function csvAction(Request $request, $filename)
+    {
+        $filepath = $this->getParameter('sylius.report.csv_directory_path');
+
+        return new Response(file_get_contents($filepath.$filename), 200, [
+            'Content-Type' => 'application/csv',
+            'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+        ]);
+    }
+
+    /**
      * @return DelegatingRendererInterface
      */
     private function getReportRenderer()

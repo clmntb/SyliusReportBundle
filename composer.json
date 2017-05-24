@@ -30,6 +30,8 @@
     "require": {
         "php": "^5.6|^7.0",
 
+        "portphp/csv": "^1.0@dev",
+        "portphp/portphp": "^1.0@dev",
         "stof/doctrine-extensions-bundle": "~1.1",
         "sylius/registry": "^1.0",
         "sylius/report": "^1.0",

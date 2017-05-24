@@ -10,6 +10,7 @@ sylius:
             renderer:
                 label: Moteur de rendu
                 template: Gabarit
+                filename: Nom du fichier
             chart:
                 type: Type
             user_registration:
@@ -17,3 +18,7 @@ sylius:
                 end: Date de fin
                 period: Période de temps
                 empty_records: Afficher les enregistrements vides ?
+    renderer:
+        report:
+            csv:
+                download: Télécharger
