@@ -16,6 +16,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -28,16 +29,22 @@ class UserRegistrationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('start', DateType::class, [
                 'label' => 'sylius.form.report.user_registration.start',
                 'years' => range(date('Y') - 100, date('Y')),
-                'data' => new \DateTime(),
+                'widget' => 'single_text',
             ])
             ->add('end', DateType::class, [
                 'label' => 'sylius.form.report.user_registration.end',
-                'years' => range(date('Y') - 100, date('Y')),
-                'data' => new \DateTime(),
+                'years' => range(date('Y') - 100, date('Y')+20),
+                'widget' => 'single_text',
+            ])
+            ->add('days_to_date', NumberType::class, [
+                'label' => 'sylius.form.report.user_registration.days_to_date',
+                'required' => false,
+                'attr' => array('min' => 1)
             ])
             ->add('period', ChoiceType::class, [
                 'choices' => UserRegistrationDataFetcher::getPeriodChoices(),

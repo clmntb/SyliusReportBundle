@@ -66,14 +66,16 @@ abstract class TimePeriod implements DataFetcherInterface
             default:
                 throw new \InvalidArgumentException('Wrong data fetcher period');
         }
-
+        
         $rawData = $this->getData($configuration);
 
         if (empty($rawData)) {
             return $data;
         }
-
+        
+              
         $labels = array_keys($rawData[0]);
+        
         $data->setLabels($labels);
 
         $fetched = [];
@@ -85,7 +87,7 @@ abstract class TimePeriod implements DataFetcherInterface
             $date = new \DateTime($row[$labels[0]]);
             $fetched[$date->format($configuration['presentationFormat'])] = $row[$labels[1]];
         }
-
+        
         $data->setData($fetched);
 
         return $data;

@@ -31,9 +31,18 @@ class NumberOfOrdersType extends AbstractType
         $builder
             ->add('start', DateType::class, [
                 'label' => 'sylius.form.report.user_registration.start',
+                'years' => range(date('Y') - 100, date('Y')),
+                'widget' => 'single_text',
             ])
             ->add('end', DateType::class, [
                 'label' => 'sylius.form.report.user_registration.end',
+                'years' => range(date('Y') - 100, date('Y')+20),
+                'widget' => 'single_text',
+            ])
+            ->add('days_to_date', NumberType::class, [
+                'label' => 'sylius.form.report.user_registration.days_to_date',
+                'required' => false,
+                'attr' => array('min' => 1)
             ])
             ->add('period', ChoiceType::class, [
                 'choices' => NumberOfOrdersDataFetcher::getPeriodChoices(),

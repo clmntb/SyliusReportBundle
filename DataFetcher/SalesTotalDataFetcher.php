@@ -27,7 +27,7 @@ class SalesTotalDataFetcher extends TimePeriod
     /**
      * @param OrderRepositoryInterface $orderRepository
      */
-    public function __construct(OrderRepositoryInterface $orderRepository)
+    public function __construct($orderRepository)
     {
         $this->orderRepository = $orderRepository;
     }

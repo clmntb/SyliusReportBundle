@@ -54,7 +54,7 @@ class ChartRenderer implements RendererInterface
                 'values' => $data->getData(),
                 'labels' => array_keys($data->getData()),
             ];
-
+            
             $rendererConfiguration = $report->getRendererConfiguration();
 
             return $this->templating->render($rendererConfiguration['template'], [
