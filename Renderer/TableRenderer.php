@@ -42,6 +42,7 @@ class TableRenderer implements RendererInterface
     public function render(ReportInterface $report, Data $data)
     {
         if (null !== $data->getData()) {
+            
             $data = [
                 'report' => $report,
                 'values' => $data->getData(),

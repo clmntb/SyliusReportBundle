@@ -56,6 +56,18 @@
             <tag name="sylius.report.data_fetcher" fetcher="sylius_data_fetcher_number_of_orders" label="Number of orders" />
         </service>
         <service id="sylius_data_fetcher_number_of_orders" alias="sylius.report.data_fetcher.number_of_orders" />
+        
+        <service id="sylius.report.data_fetcher.number_of_new_customers" class="Sylius\Bundle\ReportBundle\DataFetcher\NumberOfNewCustomersDataFetcher">
+            <argument type="service" id="sylius.repository.order" />
+            <tag name="sylius.report.data_fetcher" fetcher="sylius_data_fetcher_number_of_new_customers" label="Number of new customers" />
+        </service>
+        <service id="sylius_data_fetcher_number_of_new_customers" alias="sylius.report.data_fetcher.number_of_new_customers" />
+
+        <service id="sylius.report.data_fetcher.order_summary" class="Sylius\Bundle\ReportBundle\DataFetcher\OrderSummaryDataFetcher">
+            <argument type="service" id="sylius.repository.product" />
+            <tag name="sylius.report.data_fetcher" fetcher="sylius_data_fetcher_order_summary" label="Order summary by products" />
+        </service>
+        <service id="sylius_data_fetcher_order_summary" alias="sylius.report.data_fetcher.order_summary" />
 
         <!-- Form -->
 

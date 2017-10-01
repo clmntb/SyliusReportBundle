@@ -6,18 +6,17 @@
     <table id="results" class="ui sortable stackable celled table">
         <thead>
             <tr>
-                <th></th>
                 {% for label in labels %}
                     <th>{{ label }}</th>
                 {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for key,value in values %}
+            {% for value in values %}
                 <tr id="{{ loop.index }}">
-                    <td>{{ loop.index }}</td>
-                    <td>{{ key }}</td>
-                    <td>{{ value }}</td>
+                    {% for label in labels %}
+                        <td>{{ value[label] }}</td>                    
+                    {% endfor %}
                 </tr>
             {% endfor %}
         </tbody>

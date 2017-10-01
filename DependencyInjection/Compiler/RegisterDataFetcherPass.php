@@ -41,7 +41,7 @@ class RegisterDataFetcherPass implements CompilerPassInterface
                     'Tagged report data fetchers needs to have `fetcher` and `label` attributes.'
                 );
             }
-
+            
             $name = $attributes[0]['fetcher'];
             $dataFetchers[$attributes[0]['label']] = $name;
 
