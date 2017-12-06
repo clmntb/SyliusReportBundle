@@ -105,6 +105,33 @@
             var values = self.attr("data-values").split(";");
 
             var ctx = document.getElementById(reportCode).getContext("2d");
+			var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+			gradient.addColorStop(0, 'rgba(54, 162, 235, 0.2)');
+			gradient.addColorStop(1, 'rgba(54, 162, 235, 0.2)');
+			var myChart = new Chart(ctx, {
+                type: chartType,
+                data: {
+                                        labels: labels,
+                                        datasets: [{
+                                                label: 'data',
+                                                data: values,
+                                                backgroundColor: gradient,
+                                                strokeColor: 'rgba(54, 162, 235, 1)',
+                                                borderWidth: 1
+                                        }],
+                                },
+                                options: {
+                                        scales: {
+                                                yAxes: [{
+                                                        ticks: {
+                                                                beginAtZero:true
+                                                        }
+                                                }]
+                                        }
+                                }
+                        });
+			
+			/*
             switch(chartType) {
                 case "line": generateLineChart(labels, values, ctx); break;
                 case "bar": generateBarChart(labels, values, ctx); break;
@@ -113,6 +140,7 @@
                 case "pie": generatePieChart(labels, values, ctx); break;
                 case "doughnut": generateDoughnutChart(labels, values, ctx); break;
             }
+			*/
         }
 
         window.addEventListener("load",function(){
@@ -126,7 +154,7 @@
 {% block content %}
     <div class="col-xs-12">
         <div class="row">
-            <canvas id="{{ report.code }}" data-type="{{ configuration.type }}" data-labels="{% for key,item in values %}{{ key }}{% if loop.index != loop.length %};{% endif %}{% endfor %}" data-values="{% for key,item in values %}{{ item }}{% if loop.index != loop.length %};{% endif %}{% endfor %}" height="400"></canvas>
+			<canvas id="{{ report.code }}" data-type="{{ configuration.type }}" data-labels="{% for key,item in values %}{{ key }}{% if loop.index != loop.length %};{% endif %}{% endfor %}" data-values="{% for key,item in values %}{{ item }}{% if loop.index != loop.length %};{% endif %}{% endfor %}" height="400"></canvas>
         </div>
     </div>
 {% endblock %}
